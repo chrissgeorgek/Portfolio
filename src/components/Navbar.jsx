@@ -36,7 +36,7 @@ export default function Navbar() {
         >
           <h2 className="text-2xl font-black tracking-tight cursor-pointer">
 
-            Chriss
+            ChrissG
             <span className="text-blue-500">.</span>
 
           </h2>
