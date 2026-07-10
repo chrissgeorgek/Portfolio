@@ -6,7 +6,7 @@ const experiences = [
   {
     company: "Etome Works Ltd",
     role: "Software Engineer Intern",
-    duration: "Apr 2026 – Present",
+    duration: "Apr 2026 – June 2026",
     description:
       "Developed the SAHA Learning Platform using Django REST Framework and React.js. Implemented JWT authentication, role-based access control, PostgreSQL database design, WebSockets, Redis, and real-time chat features while contributing to scalable backend APIs and responsive frontend interfaces.",
     tech: [
@@ -21,7 +21,7 @@ const experiences = [
 
   {
     company: "IPSR Solutions Limited",
-    role: "Software Trainee",
+    role: "Software Developer Trainee",
     duration: "May 2025 – Apr 2026",
     description:
       "Developed a role-based Training Management System using Django and PostgreSQL. Built modules for student management, faculty management, batch allocation, attendance tracking, daily work reporting, approvals, and administrative operations with secure authentication and CRUD functionality.",
