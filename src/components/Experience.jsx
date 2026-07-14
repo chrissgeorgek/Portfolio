@@ -3,7 +3,7 @@ import { FaBriefcase } from "react-icons/fa";
 
 import Container from "./Container";
 import useExperience from "../hooks/useExperience";
-import { iconMap } from "../utils/IconMap";
+import { iconMap } from "../utils/iconMap";
 
 function Experience() {
 

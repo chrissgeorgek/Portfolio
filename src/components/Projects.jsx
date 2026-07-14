@@ -6,7 +6,7 @@ import {
 
 import Container from "./Container";
 import useProjects from "../hooks/useProjects";
-import { iconMap } from "../utils/IconMap";
+import { iconMap } from "../utils/iconMap";
 import { Link } from "react-router-dom";
 import { FaBookOpen } from "react-icons/fa";
 

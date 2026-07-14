@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Container from "./Container";
 import useSkills from "../hooks/useSkills";
-import { iconMap } from "../utils/IconMap";
+import { iconMap } from "../utils/iconMap";
 
 const gradientMap = {
   Frontend: "from-cyan-500 to-blue-500",
