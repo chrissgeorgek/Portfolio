@@ -10,10 +10,12 @@ import {
   FaServer,
 } from "react-icons/fa";
 
-import profile from "../assets/images/profile.jpeg";
 import Container from "./Container";
-
+import useHero from "../hooks/useHero";
+import FloatingStudentBookHero from "../components/FloatingStudentBookHero";
 function Hero() {
+  const { hero, loading, error } = useHero();
+
   const techStack = [
     "Python",
     "Django",
@@ -40,6 +42,42 @@ function Hero() {
       icon: <FaServer />,
     },
   ];
+
+  if (loading) {
+    return (
+      <section className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+
+          <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+
+          <p className="mt-6 text-slate-400">
+            Loading Portfolio...
+          </p>
+
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="min-h-screen flex items-center justify-center">
+
+        <div className="text-center">
+
+          <h2 className="text-2xl font-bold text-red-500">
+            Failed to load Hero
+          </h2>
+
+          <p className="text-slate-400 mt-3">
+            Please make sure Django server is running.
+          </p>
+
+        </div>
+
+      </section>
+    );
+  }
 
   return (
     <section className="relative min-h-screen flex items-center">
@@ -70,13 +108,13 @@ function Hero() {
 
             <h1 className="text-5xl md:text-7xl font-black leading-tight">
 
-              Chriss
+              {hero.name.split(" ")[0]}
 
               <br />
 
               <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent">
 
-                George
+                {hero.name.split(" ").slice(1).join(" ")}
 
               </span>
 
@@ -84,27 +122,22 @@ function Hero() {
 
             <h3 className="mt-8 text-2xl md:text-3xl font-bold leading-snug">
 
-              Building modern web applications
-              that solve real-world problems.
+              {hero.headline}
 
             </h3>
 
             <p className="mt-8 text-slate-400 text-lg leading-8 max-w-xl">
 
-              Passionate software developer with experience
-              building secure, scalable and responsive
-              applications using Python, Django,
-              React, PostgreSQL and modern web technologies.
+              {hero.description}
 
             </p>
-
-            {/* Buttons */}
 
             <div className="flex flex-wrap gap-5 mt-10">
 
               <a
-                href="/resume.pdf"
+                href={hero.resume}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-8 py-4 font-semibold hover:scale-105 transition duration-300"
               >
 
@@ -130,31 +163,31 @@ function Hero() {
 
             </div>
 
-            {/* Social */}
-
             <div className="flex gap-5 mt-10">
 
               <a
-                href="https://github.com/chrissgeorgek"
+                href={hero.github}
                 target="_blank"
                 rel="noreferrer"
                 className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-xl hover:bg-blue-600 transition"
               >
+
                 <FaGithub />
+
               </a>
 
               <a
-                href="https://in.linkedin.com/in/chrissgeorge"
+                href={hero.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="w-14 h-14 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-xl hover:bg-blue-600 transition"
               >
+
                 <FaLinkedin />
+
               </a>
 
             </div>
-
-            {/* Tech Pills */}
 
             <div className="flex flex-wrap gap-3 mt-10">
 
@@ -173,113 +206,137 @@ function Hero() {
 
             </div>
 
-            {/* Stats */}
-
             <div className="grid grid-cols-3 gap-5 mt-12">
-            {stats.map((item) => (
+
+              {stats.map((item) => (
+
+                <motion.div
+                  key={item.label}
+                  whileHover={{ y: -8 }}
+                  className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 text-center"
+                >
+
+                  <div className="flex justify-center text-blue-400 text-2xl mb-3">
+                    {item.icon}
+                  </div>
+
+                  <h2 className="text-3xl font-black text-white">
+                    {item.value}
+                  </h2>
+
+                  <p className="mt-2 text-sm text-slate-400">
+                    {item.label}
+                  </p>
+
+                </motion.div>
+
+              ))}
+
+            </div>
+
+          </motion.div>
+          {/* RIGHT */}
 
 <motion.div
-  key={item.label}
-  whileHover={{ y: -8 }}
-  className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 text-center"
+initial={{ opacity: 0, x: 70 }}
+animate={{ opacity: 1, x: 0 }}
+transition={{ duration: 0.8 }}
+className="relative flex justify-center items-center"
 >
 
-  <div className="flex justify-center text-blue-400 text-2xl mb-3">
-    {item.icon}
-  </div>
+{/* Background Glow */}
 
-  <h2 className="text-3xl font-black text-white">
-    {item.value}
-  </h2>
+<div className="absolute w-[420px] h-[420px] rounded-full bg-blue-600/20 blur-[120px]" />
 
-  <p className="mt-2 text-sm text-slate-400">
-    {item.label}
-  </p>
+{/* Python */}
 
+<motion.div
+  animate={{ y: [0, -10, 0] }}
+  transition={{ duration: 4, repeat: Infinity }}
+  className="absolute -left-8 top-10 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
+>
+  🐍 Python
 </motion.div>
 
-))}
+{/* React */}
 
+<motion.div
+  animate={{ y: [0, 10, 0] }}
+  transition={{ duration: 5, repeat: Infinity }}
+  className="absolute -right-10 top-20 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
+>
+  ⚛ React
+</motion.div>
+
+{/* Django */}
+
+<motion.div
+  animate={{ y: [0, -8, 0] }}
+  transition={{ duration: 4.5, repeat: Infinity }}
+  className="absolute left-0 bottom-20 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
+>
+  🚀 Django
+</motion.div>
+
+{/* PostgreSQL */}
+
+<motion.div
+  animate={{ y: [0, 8, 0] }}
+  transition={{ duration: 6, repeat: Infinity }}
+  className="absolute -right-6 bottom-28 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
+>
+  🗄 PostgreSQL
+</motion.div>
+
+{/* Profile */}
+
+<motion.div
+  animate={{
+    y: [0, -15, 0],
+  }}
+  transition={{
+    duration: 5,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="relative"
+>
+
+  <div
+    className="
+      rounded-[36px]
+      border
+      border-white/10
+      bg-white/5
+      backdrop-blur-xl
+      p-3
+      shadow-[0_0_70px_rgba(37,99,235,.25)]
+    "
+  >
+    <img
+      src={hero.profile_image}
+      alt={hero.name}
+      className="w-[290px] md:w-[330px] lg:w-[370px] rounded-[28px] object-cover"
+    />
+  </div>
+
+  {/* Floating Student Zone */}
+
+  <div
+  className="
+    absolute
+    left-1/2
+    -translate-x-1/2
+    -top-58
+    hidden
+    lg:block
+    z-40
+  "
+>
+  <FloatingStudentBookHero />
 </div>
 
 </motion.div>
-
-{/* RIGHT */}
-
-{/* RIGHT */}
-
-<motion.div
-  initial={{ opacity: 0, x: 70 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8 }}
-  className="relative flex justify-center items-center"
->
-
-  {/* Glow */}
-
-  <div className="absolute w-[380px] h-[380px] rounded-full bg-blue-600/20 blur-[110px]" />
-
-  {/* Python */}
-
-  <motion.div
-    animate={{ y: [0, -10, 0] }}
-    transition={{ duration: 4, repeat: Infinity }}
-    className="absolute -left-6 top-12 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
-  >
-    🐍 Python
-  </motion.div>
-
-  {/* React */}
-
-  <motion.div
-    animate={{ y: [0, 10, 0] }}
-    transition={{ duration: 5, repeat: Infinity }}
-    className="absolute -right-8 top-16 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
-  >
-    ⚛ React
-  </motion.div>
-
-  {/* Django */}
-
-  <motion.div
-    animate={{ y: [0, -8, 0] }}
-    transition={{ duration: 4.5, repeat: Infinity }}
-    className="absolute left-0 bottom-16 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
-  >
-    🚀 Django
-  </motion.div>
-
-  {/* PostgreSQL */}
-
-  <motion.div
-    animate={{ y: [0, 8, 0] }}
-    transition={{ duration: 6, repeat: Infinity }}
-    className="absolute -right-6 bottom-20 rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-xl px-5 py-3"
-  >
-    🗄 PostgreSQL
-  </motion.div>
-
-  {/* Profile */}
-
-  <motion.div
-    animate={{
-      y: [0, -15, 0],
-    }}
-    transition={{
-      duration: 5,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    className="relative rounded-[34px] border border-white/10 bg-white/5 backdrop-blur-xl p-3 shadow-[0_0_60px_rgba(37,99,235,.25)]"
-  >
-
-    <img
-      src={profile}
-      alt="Chriss George"
-      className="w-[300px] lg:w-[340px] rounded-[26px] object-cover"
-    />
-
-  </motion.div>
 
 </motion.div>
 
