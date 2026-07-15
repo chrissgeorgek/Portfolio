@@ -327,10 +327,17 @@ className="relative flex justify-center items-center"
     absolute
     left-1/2
     -translate-x-1/2
-    -top-58
-    hidden
-    lg:block
+
+    -top-36
+    sm:-top-44
+    md:-top-48
+    lg:-top-58
+
     z-40
+
+    scale-75
+    sm:scale-90
+    md:scale-100
   "
 >
   <FloatingStudentBookHero />
