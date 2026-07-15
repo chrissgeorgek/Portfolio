@@ -1,8 +1,75 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaArrowRight } from "react-icons/fa";
 
-const FloatingStudentBookHero = () => {
+const FloatingStudentBookHero = ({ compact = false }) => {
+  // Compact pill-button variant — used inline on mobile, next to "View Projects"
+  if (compact) {
+    return (
+      <Link to="/student-zone">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="relative inline-flex"
+        >
+          {/* Glow */}
+          <motion.div
+            className="absolute -inset-1 rounded-full bg-cyan-400/30 blur-md"
+            animate={{ opacity: [0.5, 0.9, 0.5] }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+          />
+
+          <div
+            className="
+              relative
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-cyan-400/30
+              bg-gradient-to-r
+              from-indigo-600
+              to-cyan-500
+              px-5
+              py-4
+              text-sm
+              font-bold
+              text-white
+              shadow-lg
+            "
+          >
+            {/* NEW badge */}
+            <motion.span
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="
+                absolute
+                -top-2
+                -right-2
+                rounded-full
+                bg-yellow-400
+                px-2
+                py-[2px]
+                text-[8px]
+                font-black
+                text-gray-800
+                shadow
+              "
+            >
+              NEW
+            </motion.span>
+
+            <FaBookOpen className="text-yellow-300 text-lg" />
+            Student Zone
+            <FaArrowRight className="text-xs" />
+          </div>
+        </motion.div>
+      </Link>
+    );
+  }
+
+  // Full floating book — desktop/tablet
   return (
     <Link to="/student-zone">
 

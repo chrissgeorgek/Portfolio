@@ -132,9 +132,9 @@ function Hero() {
 
             </p>
 
-            <div className="flex flex-wrap gap-5 mt-10">
+            <div className="flex flex-wrap items-center gap-5 mt-10">
 
-              <a
+            <a
                 href={hero.resume}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -161,11 +161,16 @@ function Hero() {
 
               </Link>
 
+              {/* Student Zone — exact floating book animation, shrunk down, mobile only */}
+              <div className="md:hidden scale-[0.38] origin-left -my-20 translate-x-12">
+                <FloatingStudentBookHero />
+              </div>
+
             </div>
 
             <div className="flex gap-5 mt-10">
 
-              <a
+            <a
                 href={hero.github}
                 target="_blank"
                 rel="noreferrer"
@@ -320,27 +325,28 @@ className="relative flex justify-center items-center"
     />
   </div>
 
-  {/* Floating Student Zone */}
+  {/* Floating Student Zone — desktop/tablet only, mobile version lives in the button row above */}
 
-  <div
-  className="
-    absolute
-    left-1/2
-    -translate-x-1/2
+<div
+id="student-zone"
+className="
+  hidden
+  md:block
 
-    -top-36
-    sm:-top-44
-    md:-top-48
-    lg:-top-58
+  absolute
+  left-1/2
+  -translate-x-1/2
 
-    z-40
+  md:-top-40
+  lg:-top-58
 
-    scale-75
-    sm:scale-90
-    md:scale-100
-  "
+  z-40
+
+  scale-90
+  md:scale-100
+"
 >
-  <FloatingStudentBookHero />
+<FloatingStudentBookHero />
 </div>
 
 </motion.div>
