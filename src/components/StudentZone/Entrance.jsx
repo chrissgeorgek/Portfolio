@@ -7,21 +7,23 @@ import FloatingObjects from "../Hero/FloatingObjects";
 import ParticleLayer from "../Hero/ParticleLayer";
 import GateEffects from "../Hero/GateEffects";
 import HeroFrame from "../Hero/HeroFrame";
+import useIsMobile from "../../hooks/useIsMobile";
 
 import sun from "../../assets/illustrations/studentzone/sun.svg";
 import road from "../../assets/illustrations/studentzone/road.svg";
 import gate from "../../assets/illustrations/studentzone/gate.png";
 
 const Entrance = () => {
+  const isMobile = useIsMobile();
   return (
     <section className="relative min-h-screen overflow-hidden">
       <BackButton />
 
       <GlowBackground />
-      <ParticleLayer />
+      {!isMobile && <ParticleLayer />}
       <RotatingRings />
       <HeroFrame />
-      <FloatingObjects />
+      <FloatingObjects /> 
       <GateEffects />
 
       {/* Decorative Moon */}
