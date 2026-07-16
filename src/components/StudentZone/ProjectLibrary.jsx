@@ -1,4 +1,7 @@
+// ProjectLibrary.jsx
+
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 import LibraryBackground from "./LibraryBackground";
 import Decorations from "./Decorations";
@@ -6,9 +9,9 @@ import HangingBoard from "./HangingBoard";
 import BookShelf from "./BookShelf";
 import PriceBoard from "./PriceBoard";
 import ProjectModal from "./ProjectModal";
+import MagicParticles from "./MagicParticles";
 
 import studentProjects from "../../data/studentProjects";
-import MagicParticles from "./MagicParticles";
 
 const ProjectLibrary = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -16,41 +19,73 @@ const ProjectLibrary = () => {
   return (
     <section
       id="library"
-      className="relative min-h-screen overflow-hidden"
+      className="relative overflow-hidden bg-[#071827]"
     >
-      {/* Background */}
       <LibraryBackground />
 
       <MagicParticles />
 
-      {/* Decorations */}
+      {/* Top Glow */}
+      <div
+        className="
+        absolute
+        left-1/2
+        top-0
+        h-[700px]
+        w-[700px]
+        -translate-x-1/2
+        rounded-full
+        bg-cyan-400/10
+        blur-[180px]
+        "
+      />
+
       <Decorations />
 
-      {/* Main Content */}
-      <div className="
-relative
-z-30
+      <div
+        className="
+        relative
+        z-30
 
-mx-auto
-max-w-7xl
+        mx-auto
 
-px-4
-sm:px-6
-lg:px-8
+        max-w-7xl
 
-py-12
-sm:py-16
-md:py-20
-">
+        px-6
 
-        {/* Title */}
-        <HangingBoard />
+        py-24
+        "
+      >
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: .8,
+          }}
+        >
+          <HangingBoard />
+        </motion.div>
 
-        {/* Books + Price Board */}
-        <div className="mt-10
-sm:mt-16
-md:mt-20 grid gap-12 lg:grid-cols-[3fr_1fr]">
+        <div
+          className="
+          mt-20
 
+          grid
+
+          gap-14
+
+          lg:grid-cols-[3fr_1fr]
+          "
+        >
           <BookShelf
             projects={studentProjects}
             onProjectClick={setSelectedProject}
@@ -59,12 +94,8 @@ md:mt-20 grid gap-12 lg:grid-cols-[3fr_1fr]">
           <div className="flex justify-center lg:justify-end">
             <PriceBoard />
           </div>
-
         </div>
-
       </div>
-
-      {/* Project Modal */}
 
       {selectedProject && (
         <ProjectModal
@@ -72,7 +103,6 @@ md:mt-20 grid gap-12 lg:grid-cols-[3fr_1fr]">
           onClose={() => setSelectedProject(null)}
         />
       )}
-
     </section>
   );
 };

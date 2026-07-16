@@ -1,133 +1,253 @@
-import { motion } from "framer-motion";
+// src/components/PriceBoard.jsx
 
-const prices = [
+import { motion } from "framer-motion";
+import {
+  FaGraduationCap,
+  FaCode,
+  FaLaptopCode,
+  FaDownload,
+} from "react-icons/fa";
+
+const plans = [
   {
-    title: "Mini Project",
-    price: "₹3,000",
+    icon: FaGraduationCap,
+    title: "Documentation",
+    value: "FREE",
+    color: "from-cyan-400 to-blue-500",
   },
   {
-    title: "Main Project",
-    price: "₹7,000",
+    icon: FaCode,
+    title: "Source Code",
+    value: "₹299+",
+    color: "from-violet-500 to-fuchsia-500",
   },
   {
-    title: "IEEE Project",
-    price: "Custom",
+    icon: FaLaptopCode,
+    title: "Complete Project",
+    value: "Contact",
+    color: "from-emerald-500 to-teal-500",
   },
 ];
 
 const PriceBoard = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 80 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="flex justify-center"
+      initial={{
+        opacity: 0,
+        x: 40,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        duration: .7,
+      }}
+      className="sticky top-28 w-full max-w-sm"
     >
-      {/* Wooden Frame */}
-      <div className="rounded-3xl bg-[#8B5A2B] p-4 shadow-2xl">
+      <div
+        className="
+        relative
 
-        {/* Blackboard */}
+        overflow-hidden
+
+        rounded-[32px]
+
+        border
+
+        border-cyan-400/20
+
+        bg-white/5
+
+        backdrop-blur-2xl
+
+        shadow-[0_25px_70px_rgba(0,0,0,.45)]
+        "
+      >
+        {/* Glow */}
+
         <div
           className="
-            relative
-            w-80
-            rounded-2xl
-            border-[6px]
-            border-[#3f2b16]
-            bg-[#214B38]
-            p-8
-            shadow-inner
-          "
-        >
-          {/* Chalk Dust */}
-          <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,.08),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,.05),transparent_45%)]" />
+          absolute
 
-          {/* Heading */}
-          <motion.h2
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="
-              overflow-hidden
-              whitespace-nowrap
-              border-b
-              border-dashed
-              border-white/30
-              pb-3
-              text-center
-              font-fredoka
+          -top-20
+
+          left-1/2
+
+          h-56
+
+          w-56
+
+          -translate-x-1/2
+
+          rounded-full
+
+          bg-cyan-400/20
+
+          blur-[120px]
+          "
+        />
+
+        <div className="relative z-10 p-8">
+
+          <div className="text-center">
+
+            <p
+              className="
+              text-xs
+
+              uppercase
+
+              tracking-[.4em]
+
+              text-cyan-300
+              "
+            >
+              Student Zone
+            </p>
+
+            <h2
+              className="
+              mt-3
+
               text-3xl
-              font-bold
+
+              font-black
+
               text-white
+              "
+            >
+              Resources
+            </h2>
+
+            <p className="mt-3 text-sm text-slate-300">
+              Choose what you need.
+            </p>
+
+          </div>
+
+          <div className="mt-8 space-y-4">
+
+            {plans.map((plan) => {
+
+              const Icon = plan.icon;
+
+              return (
+
+                <motion.div
+                  key={plan.title}
+                  whileHover={{
+                    scale: 1.03,
+                  }}
+                  className="
+                  flex
+
+                  items-center
+
+                  gap-4
+
+                  rounded-2xl
+
+                  border
+
+                  border-white/10
+
+                  bg-white/5
+
+                  p-4
+                  "
+                >
+
+                  <div
+                    className={`
+                    flex
+                    h-12
+                    w-12
+                    items-center
+                    justify-center
+                    rounded-xl
+                    bg-gradient-to-br
+                    ${plan.color}
+                    text-white
+                    `}
+                  >
+                    <Icon size={22} />
+                  </div>
+
+                  <div className="flex-1">
+
+                    <p className="text-sm text-slate-300">
+                      {plan.title}
+                    </p>
+
+                    <h3 className="font-bold text-white">
+                      {plan.value}
+                    </h3>
+
+                  </div>
+
+                </motion.div>
+
+              );
+
+            })}
+
+          </div>
+
+          <motion.button
+            whileHover={{
+              scale: 1.04,
+            }}
+            whileTap={{
+              scale: .96,
+            }}
+            className="
+            mt-8
+
+            flex
+
+            w-full
+
+            items-center
+
+            justify-center
+
+            gap-3
+
+            rounded-2xl
+
+            bg-gradient-to-r
+
+            from-cyan-500
+
+            via-blue-600
+
+            to-violet-600
+
+            px-6
+
+            py-4
+
+            font-semibold
+
+            text-white
+
+            shadow-xl
             "
           >
-            Price List
-          </motion.h2>
+            <FaDownload />
 
-          {/* Price List */}
-          <div className="mt-8 space-y-5 font-fredoka text-lg text-white">
+            Download Brochure
 
-            {prices.map((item) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: .5 }}
-                className="flex justify-between"
-              >
-                <span>{item.title}</span>
-                <span>{item.price}</span>
-              </motion.div>
-            ))}
-
-          </div>
-
-          {/* Divider */}
-          <div className="my-6 border-t border-dashed border-white/30" />
-
-          {/* Features */}
-          <div className="space-y-3 font-fredoka text-white">
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: .3 }}
-            >
-              ✓ Documentation Included
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: .5 }}
-            >
-              ✓ Source Code Included
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: .7 }}
-            >
-              ✓ One Revision Free
-            </motion.p>
-
-          </div>
-
-          {/* Chalk Tray */}
-          <div className="absolute -bottom-4 left-1/2 h-3 w-44 -translate-x-1/2 rounded-full bg-[#5B3A1F] shadow-lg" />
-
-          {/* Chalk */}
-          <div className="absolute -bottom-3 left-[38%] h-2 w-10 rounded-full bg-white" />
-
-          {/* Duster */}
-          <div className="absolute -bottom-3 right-[30%] h-4 w-12 rounded bg-yellow-200 shadow" />
+          </motion.button>
 
         </div>
+
       </div>
+
     </motion.div>
   );
 };

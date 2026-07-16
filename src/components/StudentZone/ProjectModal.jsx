@@ -61,7 +61,7 @@ const ProjectModal = ({ project, onClose }) => {
                 relative
                 overflow-hidden
                 rounded-[24px]
-                bg-[#FFF8E8]
+                bg-[#FCFCFD]
                 max-h-[85vh]
                 overflow-y-auto
               "
@@ -164,7 +164,7 @@ const ProjectModal = ({ project, onClose }) => {
                   className="
                     relative
                     lg:border-l
-                    lg:border-[#E4D2B0]
+                    border-slate-200
                   "
                 >
                   <div
@@ -184,7 +184,7 @@ const ProjectModal = ({ project, onClose }) => {
                               key={tech}
                               className="
                                 rounded-full
-                                bg-[#F3E8D5]
+                                bg-slate-100
                                 px-4
                                 py-1.5
                                 text-sm
