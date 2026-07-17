@@ -20,11 +20,17 @@ const Entrance = () => {
       <BackButton />
 
       <GlowBackground />
-      {!isMobile && <ParticleLayer />}
-      <RotatingRings />
-      <HeroFrame />
-      <FloatingObjects /> 
-      <GateEffects />
+
+{!isMobile && (
+  <>
+    <ParticleLayer />
+    <RotatingRings />
+    <FloatingObjects />
+    <GateEffects />
+  </>
+)}
+
+<HeroFrame />
 
       {/* Decorative Moon */}
       <motion.img
@@ -41,10 +47,14 @@ const Entrance = () => {
         z-10
         pointer-events-none
         "
-        animate={{
-          rotate: 360,
-          scale: [1, 1.05, 1],
-        }}
+        animate={
+          isMobile
+            ? { scale: 1 }
+            : {
+                rotate: 360,
+                scale: [1, 1.05, 1],
+              }
+        }
         transition={{
           rotate: {
             duration: 120,
@@ -173,23 +183,16 @@ z-[40]
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="
-    mb-5
-
-    px-5
-
-    py-2
-
-    rounded-full
-
-    border
-
-    border-cyan-400/30
-
-    bg-white/5
-
-    backdrop-blur-md
-    "
+          className={`
+            mb-5
+            px-5
+            py-2
+            rounded-full
+            border
+            border-cyan-400/30
+            bg-white/5
+            ${isMobile ? "" : "backdrop-blur-md"}
+            `}
         >
           <span
             className="
