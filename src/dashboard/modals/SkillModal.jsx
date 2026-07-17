@@ -1,29 +1,8 @@
 import { useEffect, useState } from "react";
 import Button from "../../components/common/Button";
+import { iconMap } from "../../utils/iconMap";
 
-const iconOptions = [
-  "FaReact",
-  "FaPython",
-  "SiDjango",
-  "FaNodeJs",
-  "SiExpress",
-  "SiJavascript",
-  "FaHtml5",
-  "FaCss3Alt",
-  "FaBootstrap",
-  "SiTailwindcss",
-  "SiPostgresql",
-  "SiMysql",
-  "SiSqlite",
-  "SiRedis",
-  "FaGitAlt",
-  "FaGithub",
-  "FaDocker",
-  "SiPostman",
-  "FaAws",
-  "SiVercel",
-  "SiRender",
-];
+const iconOptions = Object.keys(iconMap).sort();
 
 const categories = [
   "Frontend",
