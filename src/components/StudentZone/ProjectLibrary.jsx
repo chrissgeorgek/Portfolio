@@ -10,10 +10,11 @@ import BookShelf from "./BookShelf";
 import PriceBoard from "./PriceBoard";
 import ProjectModal from "./ProjectModal";
 import MagicParticles from "./MagicParticles";
-
+import useIsMobile from "../../hooks/useIsMobile";
 import studentProjects from "../../data/studentProjects";
 
 const ProjectLibrary = () => {
+  const isMobile = useIsMobile();
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (

@@ -20,12 +20,12 @@ const Entrance = () => {
       <BackButton />
 
       <GlowBackground />
+      <FloatingObjects />
 
 {!isMobile && (
   <>
     <ParticleLayer />
     <RotatingRings />
-    <FloatingObjects />
     <GateEffects />
   </>
 )}
@@ -41,8 +41,8 @@ const Entrance = () => {
         top-10
         right-10
         w-24
-        md:w-36
-        opacity-20
+        md:w-28
+        opacity-10
         mix-blend-screen
         z-10
         pointer-events-none
@@ -87,24 +87,24 @@ const Entrance = () => {
         alt="Gate"
         className="
 absolute
-bottom-12
+bottom-6
 left-1/2
 -translate-x-1/2
 
 w-[22rem]
 sm:w-[30rem]
 md:w-[48rem]
-lg:w-[65rem]
+lg:w-[58rem]
 
 drop-shadow-[0_0_60px_rgba(255,255,255,.15)]
 
 z-[40]
 "
         style={{
-          filter: "brightness(.82) contrast(1.08) saturate(.9)",
+          filter: "brightness(.72) contrast(1.15) saturate(.9)",
         }}
         animate={{
-          y: [0, -12, 0],
+          y: [0, -6, 0],
           scale: [1, 1.015, 1],
         }}
         transition={{
@@ -115,7 +115,7 @@ z-[40]
       />
 
       {/* Road */}
-      <motion.img
+      {/* <motion.img
         src={road}
         alt="Road"
         className="
@@ -133,13 +133,13 @@ z-[40]
 
         md:w-80
 
-        lg:w-[28rem]
+        lg:w-[32rem]
 
         h-auto
 
         object-contain
 
-        z-40
+        z-20
 
         pointer-events-none
         "
@@ -158,23 +158,31 @@ z-[40]
           duration: 1,
           delay: 0.5,
         }}
-      />
+      /> */}
       {/* Hero Content */}
       <motion.div
         className="
-  absolute
-  inset-0
-  z-[70]
-
-  flex
-  flex-col
-  justify-start pt-24 md:pt-20
-  items-center
-
-  text-center
-
-  px-6
-  "
+        absolute
+        top-0
+        left-1/2
+        -translate-x-1/2
+        
+        z-[70]
+        
+        flex
+        flex-col
+        items-center
+        
+        w-full
+        
+        pt-8
+        md:pt-10
+        lg:pt-12
+        
+        text-center
+        
+        px-6
+        "
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -213,13 +221,11 @@ z-[40]
 
         <motion.h1
           className="
-    text-5xl
-
-    sm:text-6xl
-
-    md:text-7xl
-
-    lg:text-[7rem]
+          text-4xl
+          sm:text-5xl
+          md:text-6xl
+          lg:text-[5rem]
+          xl:text-[5.5rem]
 
     font-black
 
@@ -251,7 +257,7 @@ z-[40]
 
     h-[2px]
 
-    w-40
+    w-28
 
     rounded-full
     "
@@ -265,11 +271,11 @@ z-[40]
 
         <motion.p
           className="
-    mt-8
+    mt-6
 
     max-w-3xl
 
-    text-slate-400
+    text-slate-200
 
     text-lg
 
@@ -293,10 +299,9 @@ z-[40]
               })
             }
             className="
-      px-10
-
-      py-4
-
+            px-12
+            py-5
+            text-lg
       rounded-full
 
       font-semibold
@@ -304,8 +309,8 @@ z-[40]
       text-white
       "
             style={{
-              background: "linear-gradient(135deg,#2563EB,#7C3AED)",
-              boxShadow: "0 0 35px rgba(124,58,237,.35)",
+              background: "linear-gradient(135deg,#06B6D4,#7C3AED)",
+boxShadow: "0 0 55px rgba(124,58,237,.65)",
             }}
             whileHover={{
               scale: 1.05,
@@ -329,7 +334,7 @@ z-[40]
 
         absolute
 
-        bottom-8
+        bottom-6
 
         left-1/2
 

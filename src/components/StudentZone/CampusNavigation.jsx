@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
+
 import {
   FaBookOpen,
   FaLaptopCode,
@@ -14,66 +15,92 @@ const places = [
     subtitle: "Completed Projects",
     icon: FaBookOpen,
     target: "library",
-    color: "#4F8EF7",
+    color: "#38BDF8",
+    glow: "rgba(56,189,248,.35)",
   },
   {
     title: "Services",
     subtitle: "Development Services",
     icon: FaLaptopCode,
     target: "services",
-    color: "#F6A623",
+    color: "#A855F7",
+    glow: "rgba(168,85,247,.35)",
   },
   {
     title: "Demo Lab",
     subtitle: "Watch Live Projects",
     icon: FaVideo,
     target: "demo",
-    color: "#F85D7A",
+    color: "#22C55E",
+    glow: "rgba(34,197,94,.35)",
   },
   {
     title: "Contact Desk",
     subtitle: "Let's Work Together",
     icon: FaHeadset,
     target: "contact",
-    color: "#3CCB7F",
+    color: "#F97316",
+    glow: "rgba(249,115,22,.35)",
   },
 ];
 
 export default function CampusNavigation() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-sky-200 via-sky-100 to-[#d7f6cf]">
+    <section className="relative min-h-screen overflow-hidden bg-[#07111F]">
 
-      {/* Sky Glow */}
+      {/* Background Gradient */}
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff,transparent_70%)] opacity-70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#081220] via-[#0C1830] to-[#040A15]" />
 
-      {/* Hills */}
-
-      <div className="absolute bottom-0 left-0 w-full h-56 bg-[#82D67B] rounded-t-[100%]" />
-
-      {/* Floating Clouds */}
+      {/* Aurora Glow */}
 
       <motion.div
-        animate={{ x: [-120, 1200] }}
-        transition={{
-          duration: 45,
-          repeat: Infinity,
-          ease: "linear",
+        animate={{
+          opacity: [0.45, 0.75, 0.45],
+          scale: [1, 1.15, 1],
         }}
-        className="absolute top-16 left-0 w-44 h-16 rounded-full bg-white/70 blur-sm"
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+        }}
+        className="absolute -top-60 left-1/2 h-[650px] w-[650px] -translate-x-1/2 rounded-full bg-cyan-400/20 blur-[170px]"
       />
 
       <motion.div
-        animate={{ x: [1200, -200] }}
-        transition={{
-          duration: 60,
-          repeat: Infinity,
-          ease: "linear",
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
         }}
-        className="absolute top-36 right-0 w-56 h-20 rounded-full bg-white/60 blur-sm"
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+        }}
+        className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-violet-500/20 blur-[160px]"
       />
 
-      <div className="relative z-20 max-w-6xl mx-auto px-6 py-20">
+      {/* Stars */}
+
+      {[...Array(90)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-white"
+          style={{
+            width: Math.random() * 3 + 1,
+            height: Math.random() * 3 + 1,
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            opacity: [0.15, 1, 0.15],
+          }}
+          transition={{
+            duration: 2 + Math.random() * 4,
+            repeat: Infinity,
+            delay: Math.random() * 5,
+          }}
+        />
+      ))}
+
+      <div className="relative z-20 mx-auto max-w-7xl px-6 py-24">
 
         {/* Heading */}
 
@@ -83,59 +110,48 @@ export default function CampusNavigation() {
           viewport={{ once: true }}
           className="text-center"
         >
-
-          <h2 className="text-4xl md:text-6xl font-black text-[#51351E]">
+          <h2 className="bg-gradient-to-r from-cyan-300 via-white to-violet-300 bg-clip-text text-5xl font-black text-transparent md:text-7xl">
             Student Zone Campus
           </h2>
 
-          <p className="mt-3 text-lg text-gray-700">
-            Choose where you'd like to explore
+          <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-300">
+            Explore every section through an interactive futuristic campus.
           </p>
-
         </motion.div>
 
-        {/* Campus */}
+        {/* Navigation Area */}
 
-        <div className="relative mt-20">
+        <div className="relative mt-24 flex items-center justify-center">
 
-          {/* Roads */}
+          {/* Main Hub */}
 
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 60,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute z-10 flex h-28 w-28 items-center justify-center rounded-full border border-cyan-400/40 bg-cyan-400/10 backdrop-blur-xl"
+          >
+            <div className="h-14 w-14 rounded-full bg-cyan-300 shadow-[0_0_40px_rgba(34,211,238,.9)]" />
+          </motion.div>
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
 
-            <div className="relative">
+            <div className="absolute h-[2px] w-[65%] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
 
-              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-80 rounded-full bg-[#E8D1A8]" />
-
-              <div className="absolute top-1/2 -translate-y-1/2 h-4 w-[480px] rounded-full bg-[#E8D1A8]" />
-
-              {/* Center Circle */}
-
-              <motion.div
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full border-8 border-white bg-cyan-300 shadow-xl"
-              />
-
-            </div>
+            <div className="absolute h-[65%] w-[2px] bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent" />
 
           </div>
 
-          {/* Buildings */}
+          {/* Navigation Buildings */}
 
-          <div className="grid grid-cols-2 gap-10 md:gap-16">
+          <div className="grid w-full max-w-5xl grid-cols-2 gap-12 md:gap-20">
 
             {places.map((item, index) => {
-
               const Icon = item.icon;
 
               return (
-
                 <ScrollLink
                   key={item.title}
                   to={item.target}
@@ -143,85 +159,112 @@ export default function CampusNavigation() {
                   duration={700}
                   offset={-60}
                 >
-
                   <motion.div
                     whileHover={{
-                      scale: 1.05,
-                      y: -8,
+                      y: -12,
+                      scale: 1.04,
                     }}
                     animate={{
-                      y: [0, -5, 0],
+                      y: [0, -6, 0],
                     }}
                     transition={{
-                      delay: index * .2,
-                      duration: 3,
+                      duration: 5,
                       repeat: Infinity,
+                      delay: index * 0.4,
                     }}
-                    className="flex justify-center cursor-pointer"
+                    className="cursor-pointer flex justify-center"
                   >
-
-                    <div className="w-44 md:w-52">
-
-                      {/* Roof */}
+                    <div
+                      className="relative w-56 rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur-2xl overflow-hidden"
+                      style={{
+                        boxShadow: `0 0 45px ${item.glow}`,
+                      }}
+                    >
+                      {/* Glow */}
 
                       <div
-                        className="mx-auto h-0 w-0 border-l-[42px] border-r-[42px] border-b-[30px] border-l-transparent border-r-transparent md:border-l-[55px] md:border-r-[55px] md:border-b-[40px]"
+                        className="absolute inset-0 opacity-20"
                         style={{
-                          borderBottomColor: item.color,
+                          background: `radial-gradient(circle at top, ${item.color}, transparent 70%)`,
                         }}
                       />
 
-                      {/* House */}
+                      {/* Icon */}
 
-                      <div className="rounded-[28px] border-4 border-[#8B5A2B] bg-[#FFF7EA] p-5 shadow-2xl">
-
-                        <div
-                          className="mx-auto flex h-14 w-14 md:h-16 md:w-16 items-center justify-center rounded-2xl text-white shadow-lg"
-                          style={{
-                            background: item.color,
-                          }}
-                        >
-                          <Icon size={28} />
-                        </div>
-
-                        <h3 className="mt-5 text-center text-lg md:text-xl font-black text-[#51351E]">
-
-                          {item.title}
-
-                        </h3>
-
-                        <p className="mt-2 text-center text-sm text-gray-600">
-
-                          {item.subtitle}
-
-                        </p>
-
-                        <div className="mt-6 flex items-center justify-center gap-2 text-sm font-bold text-[#8B5A2B]">
-
-                          Enter
-
-                          <FaArrowRight />
-
-                        </div>
-
+                      <div
+                        className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-2xl"
+                        style={{
+                          background: item.color,
+                          boxShadow: `0 0 35px ${item.glow}`,
+                        }}
+                      >
+                        <Icon
+                          size={36}
+                          className="text-white"
+                        />
                       </div>
 
+                      {/* Title */}
+
+                      <h3 className="relative mt-6 text-center text-2xl font-bold text-white">
+                        {item.title}
+                      </h3>
+
+                      <p className="relative mt-2 text-center text-slate-300">
+                        {item.subtitle}
+                      </p>
+
+                      {/* Button */}
+
+                      <motion.div
+                        whileHover={{
+                          scale: 1.05,
+                        }}
+                        className="relative mt-7 flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-3 text-cyan-300"
+                      >
+                        Explore
+                        <FaArrowRight />
+                      </motion.div>
                     </div>
-
                   </motion.div>
-
                 </ScrollLink>
-
               );
-
             })}
-
           </div>
 
         </div>
+        </div>
 
-      </div>
+      {/* Bottom Glow */}
 
+      <div className="absolute bottom-0 left-1/2 h-56 w-[90%] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[120px]" />
+
+      {/* Ambient Grid */}
+
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Animated Scan Line */}
+
+      <motion.div
+        className="pointer-events-none absolute left-0 right-0 h-px bg-cyan-300/40"
+        animate={{
+          top: ["0%", "100%"],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
     </section>
   );
 }
