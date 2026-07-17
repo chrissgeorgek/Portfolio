@@ -21,6 +21,8 @@ const iconOptions = [
   "FaDocker",
   "SiPostman",
   "FaAws",
+  "SiVercel",
+  "SiRender",
 ];
 
 const categories = [

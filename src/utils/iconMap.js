@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 
 import {
+  SiVercel,
+  SiRender,
   SiJavascript,
   SiDjango,
   SiExpress,
@@ -37,7 +39,6 @@ export const iconMap = {
   FaHtml5,
   FaCss3Alt,
   FaBootstrap,
-
   SiJavascript,
   SiDjango,
   SiExpress,
