@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { Navigate } from "react-router-dom";
 
 import Card from "../../components/common/Card";
 import Button from "../../components/common/Button";
