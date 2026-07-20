@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import Card from "../../components/common/Card";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
+import { Navigate, Link } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 import api from "../../api/axios";
@@ -94,6 +95,12 @@ export default function Login() {
                     backgroundSize: "60px 60px",
                 }}
             />
+            <Link
+    to="/"
+    className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/70 px-5 py-3 text-slate-300 backdrop-blur-xl transition hover:border-blue-500 hover:bg-blue-600 hover:text-white"
+>
+    ← Back to Portfolio
+</Link>
 
             <motion.div
 
@@ -229,6 +236,7 @@ export default function Login() {
                         <Button
                             type="submit"
                             loading={loading}
+                            loadingText="Logging in..."
                         >
 
                             Login
