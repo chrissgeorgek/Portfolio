@@ -22,10 +22,11 @@ const Entrance = () => {
       <GlowBackground />
       <FloatingObjects />
 
+<RotatingRings />
+
 {!isMobile && (
   <>
     <ParticleLayer />
-    <RotatingRings />
     <GateEffects />
   </>
 )}
@@ -82,7 +83,7 @@ const Entrance = () => {
       />
 
       {/* Gate */}
-      <motion.img
+      {/* <motion.img
         src={gate}
         alt="Gate"
         className="
@@ -112,7 +113,7 @@ z-[40]
           repeat: Infinity,
           ease: "easeInOut",
         }}
-      />
+      /> */}
 
       {/* Road */}
       {/* <motion.img
@@ -161,28 +162,23 @@ z-[40]
       /> */}
       {/* Hero Content */}
       <motion.div
-        className="
-        absolute
-        top-0
-        left-1/2
-        -translate-x-1/2
-        
-        z-[70]
-        
-        flex
-        flex-col
-        items-center
-        
-        w-full
-        
-        pt-8
-        md:pt-10
-        lg:pt-12
-        
-        text-center
-        
-        px-6
-        "
+  className="
+    absolute
+    inset-0
+    z-[70]
+
+    flex
+    flex-col
+    items-center
+    justify-center
+
+    text-center
+
+    px-6
+
+    -translate-y-10
+    md:-translate-y-12
+  "
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -192,7 +188,7 @@ z-[40]
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           className={`
-            mb-5
+            mb-8
             px-5
             py-2
             rounded-full
@@ -221,11 +217,11 @@ z-[40]
 
         <motion.h1
           className="
-          text-4xl
-          sm:text-5xl
-          md:text-6xl
-          lg:text-[5rem]
-          xl:text-[5.5rem]
+          text-5xl
+sm:text-6xl
+md:text-7xl
+lg:text-[6rem]
+xl:text-[6.5rem]
 
     font-black
 
@@ -271,7 +267,7 @@ z-[40]
 
         <motion.p
           className="
-    mt-6
+    mt-8
 
     max-w-3xl
 
@@ -291,7 +287,7 @@ z-[40]
         </motion.p>
 
 {/* button */}
-        <div className="mt-4 flex gap-5 flex-wrap justify-center">
+<div className="mt-10 flex justify-center">
           <motion.button
             onClick={() =>
               document.getElementById("library")?.scrollIntoView({

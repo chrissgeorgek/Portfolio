@@ -16,8 +16,8 @@ import {
 
 const rings = [
   {
-    size: 450,
-    duration: 45,
+    size: 520,
+    duration: 55,
     stroke: "#5EEAD4",
     width: 3,
     dash: "0",
@@ -29,7 +29,7 @@ const rings = [
   },
   {
     size: 600,
-    duration: 70,
+    duration: 85,
     stroke: "#A78BFA",
     width: 3,
     dash: "14 10",
@@ -41,9 +41,9 @@ const rings = [
   },
   {
     size: 760,
-    duration: 100,
+    duration: 120,
     stroke: "#38BDF8",
-    width: 2,
+    width: 3,
     dash: "5 12",
     reverse: false,
     icons: [
@@ -84,7 +84,7 @@ function OrbitIcon({
             alignItems: "center",
             justifyContent: "center",
             color,
-            fontSize: isMobile ? "15px" : "18px",
+            fontSize: isMobile ? "8px" : "24px",
             filter: isMobile
               ? "none"
               : `drop-shadow(0 0 8px ${color})`,
@@ -112,6 +112,45 @@ export default function RotatingRings() {
     
       return (
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-20">
+          {/* Premium Energy Core */}
+<motion.div
+  className="absolute rounded-full"
+  style={{
+    width: isMobile ? 260 : 520,
+    height: isMobile ? 260 : 520,
+    background:
+      "radial-gradient(circle, rgba(94,234,212,.22) 0%, rgba(59,130,246,.12) 45%, transparent 75%)",
+    filter: "blur(35px)",
+  }}
+  animate={{
+    scale: [1, 1.08, 1],
+    opacity: [0.75, 1, 0.75],
+  }}
+  transition={{
+    duration: 5,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+
+<motion.div
+  className="absolute origin-bottom"
+  style={{
+    width: 4,
+    height: isMobile ? 170 : 340,
+    background:
+      "linear-gradient(to top, transparent, #67E8F9, transparent)",
+    filter: "blur(2px)",
+  }}
+  animate={{
+    rotate: 360,
+  }}
+  transition={{
+    duration: 7,
+    repeat: Infinity,
+    ease: "linear",
+  }}
+/>
           {displayRings.map((ring, index) => (
             <motion.svg
               key={index}
@@ -130,14 +169,15 @@ export default function RotatingRings() {
             >
               <defs>
                 <filter id={`glow-${index}`}>
-                  <feGaussianBlur
-                    stdDeviation={isMobile ? "1" : "3"}
-                    result="coloredBlur"
-                  />
-                  <feMerge>
-                    <feMergeNode in="coloredBlur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
+                <feGaussianBlur
+stdDeviation={isMobile ? "2" : "5"}
+result="blur"
+/>
+
+<feMerge>
+  <feMergeNode in="blur"/>
+  <feMergeNode in="SourceGraphic"/>
+</feMerge>
                 </filter>
               </defs>
     
@@ -180,6 +220,23 @@ export default function RotatingRings() {
               ))}
             </motion.svg>
           ))}
+          <motion.div
+  className="absolute rounded-full border border-cyan-300/30"
+  style={{
+    width: isMobile ? 120 : 180,
+    height: isMobile ? 120 : 180,
+    backdropFilter: "blur(8px)",
+    background: "rgba(255,255,255,.03)",
+  }}
+  animate={{
+    scale: [1, 1.04, 1],
+    opacity: [.7, 1, .7],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+  }}
+/>
         </div>
       );
     }

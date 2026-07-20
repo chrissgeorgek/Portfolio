@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-scroll";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import { Link as RouterLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 
 const links = [
   { id: "about", label: "About" },
@@ -44,7 +45,7 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-10">
 
             {links.map((item) => (
-              <Link
+              <ScrollLink
                 key={item.id}
                 to={item.id}
                 smooth
@@ -55,18 +56,30 @@ export default function Navbar() {
                 activeClass="text-blue-400"
               >
                 {item.label}
-              </Link>
+                </ScrollLink>
             ))}
 
           </nav>
 
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            className="hidden lg:inline-flex rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 font-semibold hover:scale-105 transition"
-          >
-            Resume
-          </a>
+          <div className="hidden lg:flex items-center gap-3">
+
+  <RouterLink
+    to="/dashboard/login"
+    className="rounded-full border border-blue-500 px-6 py-3 font-semibold text-blue-400 hover:bg-blue-600 hover:text-white transition"
+  >
+    Admin Login
+  </RouterLink>
+
+  <a
+    href="/resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-3 font-semibold hover:scale-105 transition"
+  >
+    Resume
+  </a>
+
+</div>
 
           <button
             className="lg:hidden text-3xl"
@@ -82,7 +95,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-5">
 
               {links.map((item) => (
-                <Link
+                <ScrollLink
                   key={item.id}
                   to={item.id}
                   smooth
@@ -92,9 +105,15 @@ export default function Navbar() {
                   className="cursor-pointer text-slate-300 hover:text-blue-400"
                 >
                   {item.label}
-                </Link>
+                </ScrollLink>
               ))}
-
+<RouterLink
+  to="/dashboard/login"
+  onClick={() => setMenuOpen(false)}
+  className="rounded-full border border-blue-500 py-3 text-center font-semibold text-blue-400 hover:bg-blue-600 hover:text-white transition"
+>
+  Admin Login
+</RouterLink>
               <a
                 href="/resume.pdf"
                 target="_blank"

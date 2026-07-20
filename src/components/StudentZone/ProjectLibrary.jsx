@@ -24,24 +24,26 @@ const ProjectLibrary = () => {
     >
       <LibraryBackground />
 
-      <MagicParticles />
+      {!isMobile && <MagicParticles />}
 
       {/* Top Glow */}
-      <div
-        className="
-        absolute
-        left-1/2
-        top-0
-        h-[700px]
-        w-[700px]
-        -translate-x-1/2
-        rounded-full
-        bg-cyan-400/10
-        blur-[180px]
-        "
-      />
+      {!isMobile && (
+  <div
+    className="
+    absolute
+    left-1/2
+    top-0
+    h-[700px]
+    w-[700px]
+    -translate-x-1/2
+    rounded-full
+    bg-cyan-400/10
+    blur-[180px]
+    "
+  />
+)}
 
-      <Decorations />
+{!isMobile && <Decorations />}
 
       <div
         className="
