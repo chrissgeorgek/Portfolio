@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 export default function Button({
   children,
   loading = false,
+  loadingText = "Saving...",
   className = "",
   ...props
 }) {
@@ -16,11 +17,8 @@ export default function Button({
     >
       {loading ? (
         <div className="flex items-center justify-center gap-3">
-
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-
-          Saving...
-
+          {loadingText}
         </div>
       ) : (
         children
